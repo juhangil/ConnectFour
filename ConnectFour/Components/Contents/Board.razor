@@ -1,18 +1,34 @@
-﻿
+﻿@using System.Drawing
+@inject ConnectFourBoardState BoardState
 
 <HeadContent>
     <style>
         :root {
-            --board-bg: yellow; /** the color of the board **/
-            --player1: red; /** Player 1's piece color **/
-            --player2: blue; /** Player 2's piece color **/
+            --board-bg: @ColorTranslator.ToHtml(BoardColor);
+            --player1: @ColorTranslator.ToHtml(Player1Color);
+            --player2: @ColorTranslator.ToHtml(Player2Color);
         }
     </style>
 </HeadContent>
 
-<h3>Board</h3>
-
 <div>
+    <!-- Player Controller UI -->
+    <nav>
+        @for (byte i = 0; i < 7; i++)
+        {
+            var col = i;
+            <span title="Click to play a piece" @onclick="() => PlayPiece(col)">🔽</span>
+        }
+    </nav>
+
+    <article>
+        @winnerMessage  <button style="@ResetStyle" @onclick="ResetGame">Reset the game</button>
+        <br />
+        <span class="alert-danger">@errorMessage</span>
+        <span class="alert-info">@CurrentTurn</span>
+    </article>
+
+    <!-- Board Visualization Layer -->
     <div class="board">
         @for (var i = 0; i < 42; i++)
         {
@@ -21,8 +37,71 @@
             </span>
         }
     </div>
+
+    <!-- Piece Visualization Layer -->
+    @for (var i = 0; i < 42; i++)
+    {
+        <span class="@pieces[i]"></span>
+    }
 </div>
 
 @code {
+    #region Style
+    [Parameter]
+    public Color BoardColor { get; set; } = ColorTranslator.FromHtml("yellow");
 
+    [Parameter]
+    public Color Player1Color { get; set; } = ColorTranslator.FromHtml("red");
+
+    [Parameter]
+    public Color Player2Color { get; set; } = ColorTranslator.FromHtml("blue");
+    #endregion
+
+    #region Control
+
+    private string[] pieces = new string[42];
+    private string winnerMessage = string.Empty;
+    private string errorMessage = string.Empty;
+
+    private string CurrentTurn => (winnerMessage == string.Empty) ? $"Player {BoardState.PlayerTurn}'s Turn" : "";
+    private string ResetStyle => (winnerMessage == string.Empty) ? "display: none;" : "";
+
+    private void PlayPiece(byte col)
+    {
+        errorMessage = string.Empty;
+        try
+        {
+            var player = BoardState.PlayerTurn;
+            var turn = BoardState.CurrentTurn;
+            var landingRow = BoardState.PlayPiece(col);
+            pieces[turn] = $"player{player} col{col} drop{landingRow}";
+        }
+        catch (ArgumentException ex)
+        {
+            errorMessage = ex.Message;
+        }
+
+        winnerMessage = BoardState.CheckForWin() switch
+        {
+            ConnectFourBoardState.WinState.Player1_Wins => "Player 1 Wins!",
+            ConnectFourBoardState.WinState.Player2_Wins => "Player 2 Wins!",
+            ConnectFourBoardState.WinState.Tie => "It's a tie!",
+            _ => ""
+        };
+    }
+
+    private void ResetGame()
+    {
+        BoardState.ResetBoard();
+        winnerMessage = string.Empty;
+        errorMessage = string.Empty;
+        pieces = new string[42];
+    }
+
+    protected override void OnInitialized()
+    {
+        BoardState.ResetBoard();
+    }
+
+    #endregion
 }

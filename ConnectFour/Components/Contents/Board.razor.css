@@ -7,7 +7,7 @@ nav {
     width: 30em;
     display: inline-flex;
     flex-direction: row;
-    margin-left: 10px;
+    margin-left: 10px
 }
 
     nav span {
@@ -143,108 +143,108 @@ span.container {
 
 @keyframes drop1 {
     100%,75%,90%,97% {
-        transform: translateY(2.77em)
+        transform: translateY(5.77em)
     }
 
     80% {
-        transform: translateY(1.4em)
+        transform: translateY(4.4em)
     }
 
     95% {
-        transform: translateY(1.8em)
+        transform: translateY(4.8em)
     }
 
     99% {
-        transform: translateY(2em)
+        transform: translateY(5em)
     }
 }
 
 @keyframes drop2 {
     100%,75%,90%,97% {
-        transform: translateY(6.77em)
+        transform: translateY(9.77em)
     }
 
     80% {
-        transform: translateY(4.8em)
+        transform: translateY(7.8em)
     }
 
     95% {
-        transform: translateY(5.6em)
+        transform: translateY(8.6em)
     }
 
     99% {
-        transform: translateY(5.9em)
+        transform: translateY(8.9em)
     }
 }
 
 @keyframes drop3 {
     100%,75%,90%,97% {
-        transform: translateY(10.77em)
+        transform: translateY(13.77em)
     }
 
     80% {
-        transform: translateY(8.2em)
+        transform: translateY(11.2em)
     }
 
     95% {
-        transform: translateY(9.3em)
+        transform: translateY(12.3em)
     }
 
     99% {
-        transform: translateY(9.8em)
+        transform: translateY(12.8em)
     }
 }
 
 @keyframes drop4 {
     100%,75%,90%,97% {
-        transform: translateY(14.77em)
+        transform: translateY(17.77em)
     }
 
     80% {
-        transform: translateY(11.6em)
+        transform: translateY(14.7em)
     }
 
     95% {
-        transform: translateY(13em)
+        transform: translateY(15.7em)
     }
 
     99% {
-        transform: translateY(13.7em)
+        transform: translateY(16.7em)
     }
 }
 
 @keyframes drop5 {
     100%,75%,90%,97% {
-        transform: translateY(18.77em)
+        transform: translateY(21.77em)
     }
 
     80% {
-        transform: translateY(15em)
+        transform: translateY(18em)
     }
 
     95% {
-        transform: translateY(16.7em)
+        transform: translateY(19.7em)
     }
 
     99% {
-        transform: translateY(17.5em)
+        transform: translateY(20.5em)
     }
 }
 
 @keyframes drop6 {
     100%,75%,90%,97% {
-        transform: translateY(22.77em)
+        transform: translateY(25.77em)
     }
 
     80% {
-        transform: translateY(18.8em)
+        transform: translateY(22.4em)
     }
 
     95% {
-        transform: translateY(20.8em)
+        transform: translateY(23.4em)
     }
 
     99% {
-        transform: translateY(21.8em)
+        transform: translateY(24.4em)
     }
 }
