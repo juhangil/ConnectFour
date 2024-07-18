@@ -20,6 +20,7 @@
     }
 </nav>
 
+<!-- Game status message -->
 <article>
     @winnerMessage  <button style="@ResetStyle" @onclick="ResetGame">Reset the game</button>
     <br />
@@ -46,7 +47,9 @@
 </div>
 
 @code {
-    #region Style
+
+    #region CSS Parameters
+
     [Parameter]
     public Color BoardColor { get; set; } = ColorTranslator.FromHtml("yellow");
 
@@ -55,9 +58,10 @@
 
     [Parameter]
     public Color Player2Color { get; set; } = ColorTranslator.FromHtml("blue");
+
     #endregion
 
-    #region Control
+    #region Game Control
 
     private string[] pieces = new string[42];
     private string winnerMessage = string.Empty;

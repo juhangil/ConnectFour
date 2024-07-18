@@ -56,6 +56,7 @@ span.container {
     pointer-events: none
 }
 
+/* Player style settings */
 .player1, .player2 {
     width: 3.5em;
     height: 3.5em;
@@ -83,6 +84,7 @@ span.container {
     box-shadow: 0 0 0 4px var(--player2)
 }
 
+/* Player drop position */
 .col0 {
     left: calc(0em + 9px)
 }
@@ -111,6 +113,7 @@ span.container {
     left: calc(24em + 9px)
 }
 
+/* Animations */
 .drop1 {
     animation-duration: 1s;
     animation-name: drop1
@@ -141,6 +144,7 @@ span.container {
     animation-name: drop6
 }
 
+/* Keyframes */
 @keyframes drop1 {
     100%,75%,90%,97% {
         transform: translateY(1.27em)
